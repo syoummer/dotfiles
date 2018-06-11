@@ -1,0 +1,27 @@
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	ll = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all
+	lga = log --color --graph --name-status --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	co = checkout
+	cp = cherry-pick
+	st = status -sb # more concise status
+	ds = diff --staged
+	diffw = diff --word-diff # perhaps make this the default diff.
+	br = branch -v
+	brs = for-each-ref --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:blue)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(color:yellow)%(upstream:track)%(color:reset) %(contents:subject) - %(authorname) (%(color:green)%(committerdate:    relative)%(color:reset))'
+	blame = blame -wMC #ignore white space, moving text, moving text to other files
+	cam = commit -am
+	undo-commit = reset --soft HEAD^
+	springcleaning = for-each-ref --sort=-committerdate --format='%(refname:short) %(committerdate:short)' # show last commit date on branch
+	amend = commit --all --amend --no-edit
+[credential]
+	helper = osxkeychain
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[push]
+  default = simple
+[branch]
+	autosetuprebase = always
